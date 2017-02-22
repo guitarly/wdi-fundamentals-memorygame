@@ -13,14 +13,16 @@ div {
 	border: 2px solid black;
 	display: inline-block;
 }
-
-.board {
+#game-board {
+	height: 30%;
+	width: 30%;
+	display: inline-block;
+}
+/*.board {
 	height: 80%;
 	width: 50%;
 	display: inline-block;
-
-
-}
+}*/
 
 .card {
 	height: 200px;
