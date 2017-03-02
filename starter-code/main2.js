@@ -1,5 +1,3 @@
-console.log("JS file is connected to HTML! Woo!")
-
 var cards = ['queen', 'queen', 'king', 'king'];
 var cardsInPlay = [] ;
 
@@ -16,26 +14,37 @@ function createBoard() {
     cardElement.className = "card";
     cardElement.setAttribute('data-card', cards[i]);
     cardElement.addEventListener('click', isTwoCards);
-
+    cardElement.innerHTML = "<img src='image/blankCard.jpg'>";
     gameBoard.appendChild(cardElement);
 
   }
 }
+
 function isTwoCards() {
   cardsInPlay.push(this.getAttribute('data-card'));
+
   if (this.getAttribute('data-card') === 'king') {
     //this.innerHTML = cardsInPlay.push(this.getAttribute('data-card'));
-    this.innerHTML ="<img src='http://i.imgur.com/bnuv5Im.png'>"; // king
+    this.innerHTML ="<img src='image/king.jpg'>"; // king
   } else {
     //this.innerHTML = cardsInPlay.push(this.getAttribute('data-card'));
-    this.innerHTML = "<img src='http://i.imgur.com/v6buNt2.png'>"; //queen
+    this.innerHTML = "<img src='image/queen.jpg'>"; //queen
   }
-
   if (cardsInPlay.length > 1) {
     isMatch(cardsInPlay);
     cardsInPlay = [];
   }
-};
+
+}
+document.querySelector('.btn-new').addEventListener('click', function() {
+  var classNameCards = document.getElementsByClassName("card");
+  for (var i = 0; i < classNameCards.length; i++) {
+    classNameCards[i].innerHTML = "<img src='image/blankCard.jpg'>";
+  }
+  shuffle(cards);
+  cardsInPlay = [];
+});
+
 
 function isMatch(cards) {
   // alert winning message
@@ -67,5 +76,6 @@ function shuffle(array) {
 
   return array;
 }
+
 
 createBoard();
